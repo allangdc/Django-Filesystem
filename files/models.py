@@ -3,6 +3,7 @@ from django.db import models
 from django.dispatch import receiver
 from paths.models import Paths
 
+
 class Files(models.Model):
     description = models.CharField(max_length=200)
     path = models.ForeignKey(Paths, on_delete=models.CASCADE)
@@ -13,6 +14,7 @@ class Files(models.Model):
         path = str(self.path)
         return os.path.join(path, base)
 
+
 @receiver(models.signals.post_delete, sender=Files)
 def auto_delete_file_on_delete(sender, instance, **kwargs):
     """
@@ -21,6 +23,7 @@ def auto_delete_file_on_delete(sender, instance, **kwargs):
     """
     if instance.specs and os.path.isfile(instance.specs.path):
         os.remove(instance.specs.path)
+
 
 @receiver(models.signals.pre_save, sender=Files)
 def auto_delete_file_on_change(sender, instance, **kwargs):
