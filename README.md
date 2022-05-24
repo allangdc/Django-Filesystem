@@ -2,14 +2,19 @@
 
 ## Setup system
 
-python3 -m venv .venv
-source .venv/bin/activate
+### Init virtual env
+    python3 -m venv .venv
+    source .venv/bin/activate
 
-pip install -r requirements.txt
+### Install requirement packages
+    pip install -r requirements.txt
 
-python manage.py makemigrations
-python manage.py migrate
+### Create database
+    python manage.py makemigrations
+    python manage.py migrate
 
-python manage.py loaddata data.json
+### Insert initial data
+    python manage.py loaddata data.json
 
-python manage.py runserver
+### Start server
+    python manage.py runserver

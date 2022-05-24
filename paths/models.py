@@ -4,7 +4,8 @@ import os
 
 class Paths(models.Model):
     path = models.CharField(max_length=200)
-    parent = models.ForeignKey("self", on_delete=models.CASCADE)
+    parent = models.ForeignKey(
+        "self", related_name="paths", on_delete=models.CASCADE)
 
     def __str__(self) -> str:
         if self.path != "/":
