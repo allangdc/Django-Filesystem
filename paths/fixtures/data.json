@@ -3,7 +3,7 @@
         "model": "paths.paths",
         "pk": 1,
         "fields": {
-            "path": "/",
+            "foldername": "/",
             "parent": 1
         }
     }
