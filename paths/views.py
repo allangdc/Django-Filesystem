@@ -24,6 +24,6 @@ class PathViewSet(viewsets.ModelViewSet):
     def listpaths(self, request, pk=None):
         path = self.get_object()
         print("AQUI 1")
-        serializer = PathSerializer(path.paths.filter(~Q(path="/")), many=True)
+        serializer = PathSerializer(path.paths.filter(~Q(foldername="/")), many=True)
         print("AQUI 2")
         return Response(serializer.data)
