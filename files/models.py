@@ -5,8 +5,9 @@ from paths.models import Paths
 
 
 class Files(models.Model):
+    path = models.ForeignKey(
+        Paths, related_name="files", on_delete=models.CASCADE)
     description = models.CharField(max_length=200)
-    path = models.ForeignKey(Paths, on_delete=models.CASCADE)
     specs = models.FileField(upload_to='specs')
 
     def __str__(self) -> str:

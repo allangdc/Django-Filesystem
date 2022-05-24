@@ -7,3 +7,4 @@ from django.db.models import Value, Sum
 class FileViewSet(viewsets.ModelViewSet):
     queryset = Files.objects.all()
     serializer_class = FileSerializer
+
