@@ -1,11 +1,9 @@
 from django.db import models
 import os
 
-# Create your models here.
-
 
 class Paths(models.Model):
-    path = models.CharField(max_length=200, unique=True)
+    path = models.CharField(max_length=200)
     parent = models.ForeignKey("self", on_delete=models.CASCADE)
 
     def __str__(self) -> str:
@@ -13,4 +11,5 @@ class Paths(models.Model):
             return os.path.join(str(self.parent), self.path)
         return "/"
 
-
+    class Meta:
+        unique_together = ("path", "parent",)
